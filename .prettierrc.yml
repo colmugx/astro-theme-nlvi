@@ -1,8 +1,15 @@
 printWidth: 100
 tabWidth: 2
-arrowParens: "avoid"
+arrowParens: 'avoid'
 singleQuote: true
 bracketSpacing: true
-trailingComma: "all"
-endOfLine: "lf"
-
+trailingComma: 'all'
+endOfLine: 'lf'
+semi: false
+plugins:
+  - prettier-plugin-astro
+  - prettier-plugin-tailwindcss
+overrides:
+  - files: '*.astro'
+    options:
+      parser: 'astro'

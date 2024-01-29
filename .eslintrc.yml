@@ -1,6 +1,7 @@
-parserOptions:
-  ecmaVersion: 2020
-  sourceType: module
+root: true
+parser: '@typescript-eslint/parser'
+extends:
+  - plugin:astro/recommended
 plugins:
   - prettier
   - import
@@ -21,4 +22,11 @@ rules:
           - parent
         - index
         - object
-
+overrides:
+  - files:
+     - "*.astro"
+    parser: astro-eslint-parser
+    parserOptions:
+      parser: "@typescript-eslint/parser"
+      extraFileExtensions:
+        - ".astro"
