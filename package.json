@@ -8,7 +8,7 @@
     "start": "bunx --bun astro dev",
     "build": "bunx --bun astro check && bunx --bun astro build",
     "preview": "bunx --bun astro preview",
-    "astro": "bunx --bun astro"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
@@ -16,6 +16,8 @@
     "@astrojs/rss": "^4.0.4",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
+    "@designbycode/tailwindcss-text-stroke": "^1.2.1",
+    "@tailwindcss/typography": "^0.5.10",
     "astro": "^4.2.6",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"

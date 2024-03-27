@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content'
+import FormattedDate from '../component/FormattedDate.astro'
+
+const { post } = Astro.props
+---
+
+<a href={`/posts/${post.slug}/`}>
+  <article>
+    <div class="flex">
+      <FormattedDate date={post.data.pubDate!} />
+    </div>
+    <h2>{post.data.title}</h2>
+  </article>
+</a>

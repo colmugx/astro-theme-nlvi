@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content'
+import type { Category } from '../../model/category'
+
+export async function getStaticPaths() {
+  const categories = Array.from(
+    new Set(
+      (await getCollection('blog'))
+        .map<Category>(item => ({
+          id: item.data.category || '',
+          title: item.data.category?.toUpperCase() || '',
+        }))
+        .filter(Boolean),
+    ),
+  )
+
+  return categories.map(category => ({
+    params: {
+      id: category.id,
+    },
+  }))
+}
+
+---
+
+<p>hello world</p>
