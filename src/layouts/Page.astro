@@ -11,25 +11,23 @@ import Post from '../component/Post/Post.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '@constant/app'
 import { getCollection } from 'astro:content'
 
-const posts = (await getCollection('blog')).sort((a, b) => {
-  const prevDate = a.data.date || a.data.pubDate
-  const nextDate = b.data.date || b.data.pubDate
-  return nextDate!.valueOf() - prevDate!.valueOf()
-})
+type Props = {
+  description: string
+}
+
+const { description } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={SITE_TITLE} description={description} />
   </head>
   <body>
     <PageHeader />
+    <Header />
     <MainLayout>
-      <Header />
-      <section>
-        {posts.map(post => <Post post={post} />)}
-      </section>
+      <slot />
     </MainLayout>
     <Footer />
   </body>

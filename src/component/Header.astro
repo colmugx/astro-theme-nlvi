@@ -1,31 +1,27 @@
 ---
-import type { Category } from '../model/category'
+
 import HeaderLink from '../component/HeaderLink.astro'
-import { SITE_TITLE } from '@constant/app'
 import { getCollection } from 'astro:content'
+import { DISPLAY_SITE_TITLE } from '@constant/app'
+
+const title = DISPLAY_SITE_TITLE.split('\n')
 
 const categories = Array.from(
-  new Set(
-    (await getCollection('blog'))
-      .map<Category>(item => ({
-        id: item.data.category || '',
-        title: item.data.category?.toUpperCase() || '',
-      }))
-      .filter(Boolean),
-  ),
+  new Set((await getCollection('blog')).map(item => item.data.category).filter(Boolean)),
 )
-
-const title = SITE_TITLE.split('\n')
 ---
 
-<div class="relative mx-36 mt-20">
-  <h1
-    class="text-stroke-fill-transparent text-stroke-1 text-stroke-gray-100 absolute top-0 text-[20vw] font-bold"
-  >
-    {title.map(str => <span class:list={['block', 'even:ml-[2em]']}>{str}</span>)}
-  </h1>
-  <nav class="relative pt-56">
-    {categories.map(item => <HeaderLink href={`/categories/${item.id}`}>{item.title}</HeaderLink>)}
+<div class="relative mt-20 w-full">
+  <div class="absolute left-0 right-0 top-0 -z-10 overflow-hidden">
+    <h1
+      class="text-[20vw] font-bold text-stroke-1 text-stroke-gray-100 text-stroke-fill-transparent"
+    >
+      {title.map(str => <span class:list={['block', 'even:ml-[2em]']}>{str}</span>)}
+    </h1>
+  </div>
+
+  <nav class="relative flex justify-end gap-x-8 pt-56">
+    {categories.map(item => <HeaderLink href={`/categories/${item}`}>{item}</HeaderLink>)}
   </nav>
 </div>
 
