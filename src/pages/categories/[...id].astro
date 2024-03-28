@@ -1,18 +1,8 @@
 ---
-import { getCollection } from 'astro:content'
-import type { Category } from '../../model/category'
+import { postService } from 'src/service/post'
 
 export async function getStaticPaths() {
-  const categories = Array.from(
-    new Set(
-      (await getCollection('blog'))
-        .map<Category>(item => ({
-          id: item.data.category || '',
-          title: item.data.category?.toUpperCase() || '',
-        }))
-        .filter(Boolean),
-    ),
-  )
+  const categories = postService.getCategories()
 
   return categories.map(category => ({
     params: {
@@ -20,7 +10,6 @@ export async function getStaticPaths() {
     },
   }))
 }
-
 ---
 
 <p>hello world</p>

@@ -9,13 +9,9 @@ import Footer from '../component/Footer.astro'
 import Post from '../component/Post/Post.astro'
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '@constant/app'
-import { getCollection } from 'astro:content'
+import { postService } from '../service/post'
 
-const posts = (await getCollection('blog')).sort((a, b) => {
-  const prevDate = a.data.date || a.data.pubDate
-  const nextDate = b.data.date || b.data.pubDate
-  return nextDate!.valueOf() - prevDate!.valueOf()
-})
+const posts = postService.list()
 ---
 
 <!doctype html>

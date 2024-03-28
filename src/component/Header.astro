@@ -1,14 +1,11 @@
 ---
-
 import HeaderLink from '../component/HeaderLink.astro'
-import { getCollection } from 'astro:content'
 import { DISPLAY_SITE_TITLE } from '@constant/app'
+import { postService } from 'src/service/post'
 
 const title = DISPLAY_SITE_TITLE.split('\n')
 
-const categories = Array.from(
-  new Set((await getCollection('blog')).map(item => item.data.category).filter(Boolean)),
-)
+const categories = postService.getMenu()
 ---
 
 <div class="relative mt-20 w-full">
@@ -21,7 +18,7 @@ const categories = Array.from(
   </div>
 
   <nav class="relative flex justify-end gap-x-8 pt-56">
-    {categories.map(item => <HeaderLink href={`/categories/${item}`}>{item}</HeaderLink>)}
+    {categories.map(item => <HeaderLink href={item.slug}>{item.title}</HeaderLink>)}
   </nav>
 </div>
 
