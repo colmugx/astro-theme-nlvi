@@ -21,8 +21,8 @@ const posts = postService.list()
   </head>
   <body>
     <PageHeader />
+    <Header />
     <MainLayout>
-      <Header />
       <section>
         {posts.map(post => <Post post={post} />)}
       </section>

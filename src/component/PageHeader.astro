@@ -1,4 +1,12 @@
+---
+import Menu from './Menu.astro'
+
+const { pathname } = Astro.url
+const isShow = pathname !== '/'
+---
+
 <div
   class="fixed left-0 right-0 top-0 z-50 h-[52px] border-t-8 border-t-main before:absolute before:left-0 before:top-0 before:h-11 before:w-32 before:rounded-br-sm before:bg-main"
 >
+  {isShow && <Menu mini transition:name="sitemenu" />}
 </div>

@@ -39,7 +39,7 @@ class PostService {
     const Index: Category = {
       id: '0',
       title: 'Posts',
-      slug: '',
+      slug: '/',
     }
 
     return [Index].concat(this.getCategories())

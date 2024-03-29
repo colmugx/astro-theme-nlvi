@@ -1,11 +1,12 @@
 ---
-import HeaderLink from '../component/HeaderLink.astro'
 import { DISPLAY_SITE_TITLE } from '@constant/app'
-import { postService } from 'src/service/post'
+import Menu from './Menu.astro'
 
 const title = DISPLAY_SITE_TITLE.split('\n')
 
-const categories = postService.getMenu()
+const { pathname } = Astro.url
+const isShow = pathname === '/'
+
 ---
 
 <div class="relative mt-20 w-full">
@@ -17,9 +18,7 @@ const categories = postService.getMenu()
     </h1>
   </div>
 
-  <nav class="relative flex justify-end gap-x-8 pt-56">
-    {categories.map(item => <HeaderLink href={item.slug}>{item.title}</HeaderLink>)}
-  </nav>
+    {isShow && <Menu transition:name='sitemenu' />}
 </div>
 
 <style>
