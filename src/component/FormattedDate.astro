@@ -1,17 +1,19 @@
 ---
+import { SITE_LANG } from '@constant/app'
+
 interface Props {
-	date: Date;
+  date: Date
 }
 
-const { date } = Astro.props;
+const { date } = Astro.props
 ---
 
 <time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+  {
+    date.toLocaleDateString(SITE_LANG, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  }
 </time>

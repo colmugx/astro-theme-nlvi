@@ -6,12 +6,8 @@ import PageHeader from '../component/PageHeader.astro'
 import Header from '../component/Header.astro'
 import Footer from '../component/Footer.astro'
 
-import Post from '../component/Post/Post.astro'
-
 import { SITE_TITLE, SITE_DESCRIPTION } from '@constant/app'
-import { postService } from '../service/post'
-
-const posts = postService.list()
+import PostList from '@component/Post/List.astro'
 ---
 
 <!doctype html>
@@ -23,9 +19,7 @@ const posts = postService.list()
     <PageHeader />
     <Header />
     <MainLayout>
-      <section>
-        {posts.map(post => <Post post={post} />)}
-      </section>
+      <PostList />
     </MainLayout>
     <Footer />
   </body>
