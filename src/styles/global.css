@@ -40,76 +40,26 @@ html {
   @apply dark:bg-gray-950 dark:text-gray-200;
 }
 
+a {
+  @apply text-gray-800 no-underline;
+}
+
 h1 {
-  @apply text-7xl;
+  @apply text-5xl;
 }
 
 h2 {
-  font-size: 2.441em;
+  @apply text-4xl;
 }
 
 h3 {
-  font-size: 1.953em;
+  @apply text-3xl;
 }
 
 h4 {
-  font-size: 1.563em;
+  @apply text-2xl;
 }
 
 h5 {
-  font-size: 1.25em;
-}
-
-strong,
-b {
-  font-weight: 700;
-}
-a {
-  color: var(--accent);
-}
-a:hover {
-  color: var(--accent);
-}
-p {
-  margin-bottom: 1em;
-}
-.prose p {
-  margin-bottom: 2em;
-}
-textarea {
-  width: 100%;
-  font-size: 16px;
-}
-input {
-  font-size: 16px;
-}
-table {
-  width: 100%;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-code {
-  padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
-  border-radius: 2px;
-}
-pre {
-  padding: 1.5em;
-  border-radius: 8px;
-}
-pre > code {
-  all: unset;
-}
-blockquote {
-  border-left: 4px solid var(--accent);
-  padding: 0 0 0 20px;
-  margin: 0px;
-  font-size: 1.333em;
-}
-hr {
-  border: none;
-  border-top: 1px solid rgb(var(--gray-light));
+  @apply text-xl;
 }

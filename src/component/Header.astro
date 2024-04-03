@@ -6,19 +6,18 @@ const title = DISPLAY_SITE_TITLE.split('\n')
 
 const { pathname } = Astro.url
 const isShow = pathname === '/'
-
 ---
 
 <div class="relative mt-20 w-full">
   <div class="absolute left-0 right-0 top-0 -z-10 overflow-hidden">
     <h1
-      class="text-[20vw] font-bold text-stroke-1 text-stroke-gray-100 text-stroke-fill-transparent"
+      class="text-[20vw] font-bold text-stroke-1 text-stroke-gray-100 text-stroke-fill-transparent forced-colors:opacity-5 dark:opacity-5"
     >
       {title.map(str => <span class:list={['block', 'even:ml-[2em]']}>{str}</span>)}
     </h1>
   </div>
 
-    {isShow && <Menu transition:name='sitemenu' />}
+  {isShow && <Menu transition:name="sitemenu" />}
 </div>
 
 <style>
