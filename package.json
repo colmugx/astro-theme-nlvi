@@ -20,7 +20,6 @@
     "@designbycode/tailwindcss-text-stroke": "^1.2.1",
     "@tailwindcss/typography": "^0.5.10",
     "astro": "^4.2.6",
-    "nanostores": "^0.10.2",
     "svelte": "^4.2.12",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.4.3"

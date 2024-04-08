@@ -7,5 +7,5 @@ export const SITE_TITLE = "Colmugx's Space"
 export const SITE_LANG: LanguageTag = 'en'
 
 export const DISPLAY_SITE_TITLE = "Colmugx's\n Space"
-export const SITE_DESCRIPTION = 'Welcome to my website!'
+export const SITE_DESCRIPTION = 'Welcome to Colmugx\'s Space'
 
