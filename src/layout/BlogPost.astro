@@ -8,12 +8,14 @@ import PageHeader from 'src/component/PageHeader.astro'
 
 type Props = CollectionEntry<'blog'>['data']
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props
+const { title, description, date, pubDate, updatedDate } = Astro.props
+const _date = date || pubDate
+
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description!} />
   </head>
 
   <body>
@@ -24,7 +26,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props
         <div class="prose">
           <div class="title">
             <div class="date">
-              <FormattedDate date={pubDate} />
+              <FormattedDate date={_date!} />
               {
                 updatedDate && (
                   <div class="last-updated-on">

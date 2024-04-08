@@ -1,21 +1,30 @@
 ---
 import { DISPLAY_SITE_TITLE } from '@constant/app'
-import Menu from './Menu.astro'
+import Menu, { type TMenu } from './Menu.astro'
+import { postService } from '@service/post'
 
+const categories = postService.getMenu()
 const title = DISPLAY_SITE_TITLE.split('\n')
 
-const { pathname } = Astro.url
+const { pathname, searchParams } = Astro.url
+
+const menuList = categories.map<TMenu>(item => ({
+  title: item.title,
+  slug: item.id && `?category=${item.id}`,
+  active: searchParams.get('category') === item.id,
+}))
+
 const isShow = pathname === '/'
 ---
 
 <div class="relative mt-20 w-full">
   <div class="absolute left-0 right-0 top-0 -z-10 overflow-hidden">
     <h1
-      class="text-[20vw] font-texture font-bold text-stroke-1 text-stroke-gray-100 text-stroke-fill-transparent forced-colors:opacity-5 dark:opacity-5"
+      class="font-texture text-[20vw] font-bold text-stroke-1 text-stroke-gray-100 text-stroke-fill-transparent dark:opacity-5 forced-colors:opacity-5"
     >
       {title.map(str => <span class:list={['block', 'even:ml-[2em]']}>{str}</span>)}
     </h1>
   </div>
 
-  {isShow && <Menu transition:name="sitemenu" />}
+  {isShow && <Menu list={menuList} transition:name="sitemenu" />}
 </div>

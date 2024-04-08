@@ -1,14 +1,32 @@
 ---
-import Menu from './Menu.astro'
+import Menu, { type TMenu } from './Menu.astro'
 
 const { pathname } = Astro.url
 const isShow = pathname !== '/'
+
+const list: TMenu[] = [
+  {
+    title: 'Posts',
+    slug: '/',
+  },
+  {
+    title: 'Tags',
+    slug: '/tags',
+  },
+  {
+    title: 'About',
+    slug: '/about',
+  },
+]
 ---
 
-<div
-  class="fixed left-0 right-0 top-0 z-50 h-[52px] border-t-8 border-t-main rect"
->
-  {isShow && <Menu mini transition:name="sitemenu" />}
+<div class="rect fixed left-0 right-0 top-0 z-50 h-[52px] border-t-8 border-t-main">
+  <Menu
+    list={list}
+    mini
+    transition:name="sitemenu"
+    className={isShow ? '' : 'opacity-0 transition-opacity hover:opacity-100'}
+  />
 </div>
 
 <style>

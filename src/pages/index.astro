@@ -3,11 +3,15 @@ import MainLayout from '../layout/Main.astro'
 
 import BaseHead from '../component/BaseHead.astro'
 import PageHeader from '../component/PageHeader.astro'
-import Header from '../component/Header.astro'
 import Footer from '../component/Footer.astro'
 
+import Header from '../view/svelte/Header.svelte'
+import PostList from '../view/svelte/PostList.svelte'
+
+import { postService } from '@service/post'
+
 import { SITE_TITLE, SITE_DESCRIPTION } from '@constant/app'
-import PostList from '@component/Post/List.astro'
+
 ---
 
 <!doctype html>
@@ -17,9 +21,9 @@ import PostList from '@component/Post/List.astro'
   </head>
   <body>
     <PageHeader />
-    <Header />
+    <Header list={postService.getMenu()} client:load />
     <MainLayout>
-      <PostList />
+      <PostList list={postService.list()} client:load />
     </MainLayout>
     <Footer />
   </body>

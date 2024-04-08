@@ -1,16 +1,33 @@
 ---
-import { postService } from '../service/post'
 import HeaderLink from './HeaderLink.astro'
 
-const categories = postService.getMenu()
+export type TMenu = {
+  title: string
+  slug: string
+  active?: boolean
+}
 
 type Props = {
+  list: TMenu[]
+  className?: string
   mini?: boolean
 }
 
-const { mini } = Astro.props
+const { mini, className, list } = Astro.props
 ---
 
-<nav class:list={['flex items-center gap-x-4 h-full', mini ? 'ml-36' : 'relative mx-24 justify-end pt-56']}>
-  {categories.map(item => <HeaderLink href={item.slug} class={mini ? 'text-xl' : 'text-5xl'}>{item.title}</HeaderLink>)}
+<nav
+  class:list={[
+    'flex h-full items-center gap-x-4',
+    mini ? 'ml-36' : 'relative mx-24 justify-end pt-52',
+    className,
+  ]}
+>
+  {
+    list.map(item => (
+      <HeaderLink isActive={item.active} href={item.slug} class={mini ? 'text-xl' : 'text-5xl'}>
+        {item.title}
+      </HeaderLink>
+    ))
+  }
 </nav>

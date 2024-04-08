@@ -5,6 +5,7 @@
     "strictNullChecks": true,
     "paths": {
       "@component/*": ["src/component/*"],
+      "@atom/*": ["src/atom/*"],
       "@constant/*": ["src/constant/*"],
       "@service/*": ["src/service/*"],
     },

@@ -31,18 +31,16 @@ class PostService {
       .map<Category>(item => ({
         id: item,
         title: item,
-        slug: `categories/${item}`,
       }))
   }
 
   getMenu() {
-    const Index: Category = {
-      id: '0',
+    const index: Category = {
+      id: '',
       title: 'Posts',
-      slug: '/',
     }
 
-    return [Index].concat(this.getCategories())
+    return [index].concat(this.getCategories())
   }
 
   private async init() {
@@ -51,3 +49,4 @@ class PostService {
 }
 
 export const postService = PostService.getInstance()
+export type { PostService }
