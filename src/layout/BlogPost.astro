@@ -1,47 +1,44 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import BaseHead from '../component/BaseHead.astro'
 import Header from '../component/Header.astro'
-import Footer from '../component/Footer.astro'
-import FormattedDate from '../component/FormattedDate.astro'
-import PageHeader from 'src/component/PageHeader.astro'
+import FormattedDate from '@component/svelte/FormattedDate.svelte'
+import Page from './Page.astro'
+import MainLayout from '../layout/Main.astro'
 
 type Props = CollectionEntry<'blog'>['data']
 
-const { title, description, date, pubDate, updatedDate } = Astro.props
+const { title, description, date, pubDate, updatedDate, category } = Astro.props
 const _date = date || pubDate
-
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={title} description={description!} />
-  </head>
-
-  <body>
-    <PageHeader />
-    <Header />
-    <main>
-      <article>
-        <div class="prose">
-          <div class="title">
-            <div class="date">
-              <FormattedDate date={_date!} />
-              {
-                updatedDate && (
-                  <div class="last-updated-on">
-                    Last updated on <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
-            </div>
-            <h1 class="text-7xl">{title}</h1>
-            <hr />
-          </div>
+<Page title={title} description={description!}>
+  <Header />
+  <MainLayout>
+    <article class="pt-52">
+      <div class="flex flex-col">
+        <div class="flex items-center text-sm uppercase text-gray-500">
+          <FormattedDate date={_date!} />
+          <a
+            href={`/categories/${category}`}
+            class="relative ml-2 pl-1 text-main before:absolute before:-left-1 before:top-1/2 before:h-0.5 before:w-0.5 before:-translate-y-1/2 before:rounded-full before:bg-gray-500 hover:underline"
+          >
+            {category}
+          </a>
+          {
+            updatedDate && (
+              <div class="last-updated-on">
+                Last updated on <FormattedDate date={updatedDate} />
+              </div>
+            )
+          }
+        </div>
+        <h1 class="font-texture text-9xl">{title}</h1>
+      </div>
+      <div class="flex justify-center">
+        <div class="font-bodytext prose-2xl">
           <slot />
         </div>
-      </article>
-    </main>
-    <Footer />
-  </body>
-</html>
+      </div>
+    </article>
+  </MainLayout>
+</Page>

@@ -1,31 +1,22 @@
 ---
-import MainLayout from '../layout/Main.astro'
-
 import BaseHead from '../component/BaseHead.astro'
 import PageHeader from '../component/PageHeader.astro'
-import Header from '../component/Header.astro'
-import Footer from '../component/Footer.astro'
-
-import { SITE_TITLE } from '@constant/app'
 
 type Props = {
+  title: string
   description: string
 }
 
-const { description } = Astro.props
+const { title, description } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={description} />
+    <BaseHead title={title} description={description} />
   </head>
   <body>
     <PageHeader />
-    <Header />
-    <MainLayout>
-      <slot />
-    </MainLayout>
-    <Footer />
+    <slot />
   </body>
 </html>
