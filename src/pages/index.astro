@@ -13,7 +13,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@constant/app'
 ---
 
 <Page title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <Header list={postService.getMenu()} client:load />
+  <Header list={postService.getCategories()} client:load />
   <MainLayout>
     <PostList list={postService.list()} client:load />
   </MainLayout>

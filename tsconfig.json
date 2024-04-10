@@ -5,7 +5,9 @@
     "strictNullChecks": true,
     "paths": {
       "@component/*": ["src/component/*"],
+      "@view/*": ["src/view/*"],
       "@constant/*": ["src/constant/*"],
+      "@model/*": ["src/model/*"],
       "@service/*": ["src/service/*"],
     },
   },

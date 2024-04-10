@@ -34,15 +34,6 @@ class PostService {
       }))
   }
 
-  getMenu() {
-    const index: Category = {
-      id: '',
-      title: 'Posts',
-    }
-
-    return [index].concat(this.getCategories())
-  }
-
   private async init() {
     this.data = await getCollection('blog')
   }

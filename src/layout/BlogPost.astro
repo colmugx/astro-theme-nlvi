@@ -1,41 +1,30 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import Header from '../component/Header.astro'
-import FormattedDate from '@component/svelte/FormattedDate.svelte'
+import Header from '../view/svelte/Header.svelte'
 import Page from './Page.astro'
 import MainLayout from '../layout/Main.astro'
+import PostMeta from '@component/svelte/Post/PostMeta.svelte'
+import type { PostMeta as TPostMeta } from '@model/post-meta'
 
-type Props = CollectionEntry<'blog'>['data']
+type Props = CollectionEntry<'blog'>
 
-const { title, description, date, pubDate, updatedDate, category } = Astro.props
-const _date = date || pubDate
+const { id, data } = Astro.props
+
+const postMeta: TPostMeta = {
+  ...data,
+  id,
+  tags: data.tags || [],
+  date: (data.date || data.pubDate)!,
+}
 ---
 
-<Page title={title} description={description!}>
+<Page title={data.title} description={data.description || ''}>
   <Header />
   <MainLayout>
-    <article class="pt-52">
-      <div class="flex flex-col">
-        <div class="flex items-center text-sm uppercase text-gray-500">
-          <FormattedDate date={_date!} />
-          <a
-            href={`/categories/${category}`}
-            class="relative ml-2 pl-1 text-main before:absolute before:-left-1 before:top-1/2 before:h-0.5 before:w-0.5 before:-translate-y-1/2 before:rounded-full before:bg-gray-500 hover:underline"
-          >
-            {category}
-          </a>
-          {
-            updatedDate && (
-              <div class="last-updated-on">
-                Last updated on <FormattedDate date={updatedDate} />
-              </div>
-            )
-          }
-        </div>
-        <h1 class="font-texture text-9xl">{title}</h1>
-      </div>
+    <article class="pt-32">
+      <PostMeta meta={postMeta} />
       <div class="flex justify-center">
-        <div class="font-bodytext prose-2xl">
+        <div class="prose-2xl font-bodytext">
           <slot />
         </div>
       </div>
