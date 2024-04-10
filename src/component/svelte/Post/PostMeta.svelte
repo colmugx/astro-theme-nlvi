@@ -23,10 +23,9 @@
     {/if}
   </div>
   <div class="pt-1 mb-8">
-    <h1 class="text-9xl uppercase font-bold">{meta.title}</h1>
+    <h1 class="text-8xl uppercase font-bold">{meta.title}</h1>
     {#if meta.subTitle}
       <span>{meta.subTitle}</span>
     {/if}
-
   </div>
 </div>
