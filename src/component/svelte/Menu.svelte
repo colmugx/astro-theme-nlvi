@@ -12,7 +12,7 @@
   {#each list as item}
     <a
       href={item.slug}
-      class={`pt-2 font-texture font-bold leading-none text-gray-300 hover:text-gray-600 ${mini ? 'text-xl' : 'text-5xl'} ${item.active ? 'text-gray-800' : ''}`}
+      class={`pt-2 font-texture font-bold leading-none text-gray-300 hover:text-gray-500 ${mini ? 'text-xl' : 'text-5xl'} ${item.active ? 'text-gray-800' : ''}`}
     >
       {item.title}
     </a>

@@ -1,0 +1,82 @@
+.content {
+  table {
+    min-width: 50%;
+    margin: 16px auto;
+    border-collapse: collapse;
+    list-style: none;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  table tr {
+    font-weight: 500;
+  }
+
+  table tr:nth-child(2n) {
+    @apply bg-main/60;
+  }
+
+  table th,
+  table td {
+    min-width: 100px;
+    padding: 8px;
+    word-break: break-all;
+  }
+
+  table thead {
+    background-color: #fafafa;
+  }
+
+  a {
+    @apply text-main;
+
+    
+  }
+
+  a:hover {
+    @apply relative text-main/80;
+
+    &:before {
+      content: '';
+      @apply absolute -bottom-1 left-0 w-full h-px bg-current;
+    }
+  }
+
+  i {
+    font-weight: 300;
+  }
+
+  blockquote {
+    @apply mx-0 my-1 border-l-4 border-main bg-main/10 px-6 py-1 text-gray-500 rounded-r-md;
+    
+    p {
+      @apply my-1;
+    }
+
+    ul {
+      @apply m-0;
+    }
+  }
+
+  ul,
+  ol {
+    @apply leading-loose;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  code {
+    @apply relative px-1 font-bold;
+
+    &::after {
+      content: '';
+      @apply absolute top-2.5 right-0 w-full h-1/2 bg-main/30;
+    }
+  }
+}
