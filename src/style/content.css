@@ -71,7 +71,7 @@
     @apply list-decimal;
   }
 
-  code {
+  :not(pre) code {
     @apply relative px-1 font-bold;
 
     &::after {
