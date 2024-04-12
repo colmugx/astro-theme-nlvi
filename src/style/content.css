@@ -1,4 +1,32 @@
 .content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-bold mt-12 mb-4 before:contents before:content-['#_'] before:text-main;
+  }
+
+  h1 {
+    @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  h5 {
+    @apply text-xl;
+  }
+
   table {
     min-width: 50%;
     margin: 16px auto;
@@ -28,17 +56,14 @@
   }
 
   a {
-    @apply text-main;
-
-    
+    @apply text-main after:content-['_↗'] after:font-mono;
   }
 
   a:hover {
     @apply relative text-main/80;
 
     &:before {
-      content: '';
-      @apply absolute -bottom-1 left-0 w-full h-px bg-current;
+      @apply content-[''] absolute -bottom-1 left-0 h-px w-full bg-current;
     }
   }
 
@@ -47,8 +72,8 @@
   }
 
   blockquote {
-    @apply mx-0 my-1 border-l-4 border-main bg-main/10 px-6 py-1 text-gray-500 rounded-r-md;
-    
+    @apply mx-0 my-1 rounded-r-md border-l-4 border-main bg-main/10 px-6 py-1 text-gray-500;
+
     p {
       @apply my-1;
     }
@@ -76,7 +101,7 @@
 
     &::after {
       content: '';
-      @apply absolute top-2.5 right-0 w-full h-1/2 bg-main/30;
+      @apply absolute right-0 top-2.5 h-1/2 w-full bg-main/30;
     }
   }
 }
