@@ -30,7 +30,7 @@
 <div class="relative mt-20 w-full">
   <div class="absolute left-0 right-0 top-0 -z-10 overflow-hidden">
     <h1
-      class="font-texture text-[22vw] font-bold text-stroke-1 text-stroke-gray-100 text-stroke-fill-transparent dark:opacity-5 forced-colors:opacity-5"
+      class="font-texture text-[22vw] leading-none font-bold text-stroke-1 text-stroke-gray-100 text-stroke-fill-transparent dark:opacity-5 forced-colors:opacity-5"
     >
       {#each title as str}
         <span class="block even:ml-[2em]">{str}</span>
