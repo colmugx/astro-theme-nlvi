@@ -20,7 +20,7 @@
     {/if}
   </div>
   <a href={`/posts/${post.slug}/`}>
-    <h2 class="my-2 line-clamp-2 text-4xl font-bold uppercase tracking-wide">{post.data.title}</h2>
+    <h2 class="my-2 line-clamp-2 text-4xl font-bold uppercase tracking-wide dark:text-gray-400">{post.data.title}</h2>
   </a>
   {#if post.data.description}
     <div>

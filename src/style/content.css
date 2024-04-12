@@ -37,7 +37,7 @@
   }
 
   table tr {
-    font-weight: 500;
+    @apply font-bold;
   }
 
   table tr:nth-child(2n) {
@@ -68,11 +68,11 @@
   }
 
   i {
-    font-weight: 300;
+    @apply font-light;
   }
 
   blockquote {
-    @apply mx-0 my-1 rounded-r-md border-l-4 border-main bg-main/10 px-6 py-1 text-gray-500;
+    @apply mx-0 my-1 rounded-r-md border-l-4 border-main bg-main/10 px-6 py-1 text-gray-500 dark:text-gray-500;
 
     p {
       @apply my-1;
@@ -101,7 +101,7 @@
 
     &::after {
       content: '';
-      @apply absolute right-0 top-2.5 h-1/2 w-full bg-main/30;
+      @apply absolute right-0 top-2.5 h-1/2 w-full bg-main/30 -z-10;
     }
   }
 }
