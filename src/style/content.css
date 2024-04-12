@@ -4,7 +4,7 @@
   h3,
   h4,
   h5 {
-    @apply font-bold mt-12 mb-4 before:contents before:content-['#_'] before:text-main;
+    @apply mb-4 mt-12 font-bold before:contents before:text-main before:content-['#_'];
   }
 
   h1 {
@@ -56,15 +56,15 @@
   }
 
   a {
-    @apply text-main after:content-['_↗'] after:font-mono;
+    @apply relative text-main after:font-mono after:content-['↗'];
+
+    &:before {
+      @apply absolute -bottom-0.5 left-0 h-px w-full bg-current content-[''];
+    }
   }
 
   a:hover {
-    @apply relative text-main/80;
-
-    &:before {
-      @apply content-[''] absolute -bottom-1 left-0 h-px w-full bg-current;
-    }
+    @apply text-main/80;
   }
 
   i {
