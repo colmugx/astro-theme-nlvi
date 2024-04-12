@@ -7,7 +7,9 @@ import MainLayout from '../layout/Main.astro'
 import PostMeta from '@component/svelte/Post/PostMeta.svelte'
 import type { PostMeta as TPostMeta } from '@model/post-meta'
 
-type Props = CollectionEntry<'blog'>
+type Props = Omit<CollectionEntry<'blog'>, 'id'> & {
+  id: string
+}
 
 const { id, data } = Astro.props
 
