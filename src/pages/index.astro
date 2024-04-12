@@ -7,10 +7,12 @@ import PostList from '../view/svelte/PostList.svelte'
 import { postService } from '@service/post'
 
 import Page from '../layout/Page.astro'
-import { SITE_DESCRIPTION, SITE_TITLE } from '@constant/app'
+import { SITE_DESCRIPTION, SITE_SUB_TITLE, SITE_TITLE } from '@constant/app'
+
+const title = `${SITE_TITLE} | ${SITE_SUB_TITLE}`
 ---
 
-<Page title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Page title={title} description={SITE_DESCRIPTION}>
   <Header list={postService.getCategories()} client:load />
   <MainLayout>
     <PostList list={postService.list()} client:load />

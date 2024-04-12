@@ -6,6 +6,7 @@ import Page from './Page.astro'
 import MainLayout from '../layout/Main.astro'
 import PostMeta from '@component/svelte/Post/PostMeta.svelte'
 import type { PostMeta as TPostMeta } from '@model/post-meta'
+import { SITE_DESCRIPTION, SITE_TITLE } from '@constant/app'
 
 type Props = Omit<CollectionEntry<'blog'>, 'id'> & {
   id: string
@@ -19,15 +20,17 @@ const postMeta: TPostMeta = {
   tags: data.tags || [],
   date: (data.date || data.pubDate)!,
 }
+
+const title = `${data.title} · ${SITE_TITLE} `
 ---
 
-<Page title={data.title} description={data.description || ''}>
+<Page title={title} description={data.description || SITE_DESCRIPTION}>
   <Header />
   <MainLayout>
     <article class="pt-32">
       <PostMeta meta={postMeta} />
       <div class="flex justify-center">
-        <div class="prose-lg font-bodytext max-w-3xl py-6 content">
+        <div class="content prose-lg max-w-3xl py-6 font-bodytext">
           <slot />
         </div>
       </div>

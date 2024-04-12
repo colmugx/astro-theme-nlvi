@@ -4,6 +4,7 @@
 import type { LanguageTag } from './_lang'
 
 export const SITE_TITLE = "Colmugx's Space"
+export const SITE_SUB_TITLE = "Make The World Better"
 export const SITE_LANG: LanguageTag = 'en'
 
 export const DISPLAY_SITE_TITLE = "Colmugx's\n Space"
