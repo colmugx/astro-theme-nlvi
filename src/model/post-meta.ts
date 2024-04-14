@@ -8,6 +8,7 @@ export interface PostMeta {
   category?: string
   tags?: string[]
   cover?: string
+  pin?: boolean
 }
 
 export type PostMetaInList = Omit<PostMeta, 'subTitle' | 'description'>

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { CollectionEntry } from 'astro:content'
+  import type { BlogEntry } from '@content/config'
   import Post from '@component/svelte/Post/PostItem.svelte'
   import { onMount } from 'svelte'
-  export let list: CollectionEntry<'blog'>[] = []
+  export let list: BlogEntry[] = []
 
-  let _list: CollectionEntry<'blog'>[] = []
+  let _list: BlogEntry[] = []
 
   onMount(() => {
     const searchParams = new URL(window.location.href).searchParams

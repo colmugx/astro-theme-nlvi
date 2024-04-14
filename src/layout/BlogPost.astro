@@ -1,6 +1,6 @@
 ---
 import '../style/content.css'
-import type { CollectionEntry } from 'astro:content'
+import type { BlogEntry } from '@content/config'
 import Header from '../view/svelte/Header.svelte'
 import Page from './Page.astro'
 import MainLayout from '../layout/Main.astro'
@@ -8,7 +8,7 @@ import PostMeta from '@component/svelte/Post/PostMeta.svelte'
 import type { PostMeta as TPostMeta } from '@model/post-meta'
 import { SITE_DESCRIPTION, SITE_TITLE } from '@constant/app'
 
-type Props = Omit<CollectionEntry<'blog'>, 'id'> & {
+type Props = Omit<BlogEntry, 'id'> & {
   id: string
 }
 

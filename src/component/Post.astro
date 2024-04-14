@@ -1,9 +1,9 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import type { BlogEntry } from '@content/config'
 import FormattedDate from '@component/svelte/FormattedDate.svelte'
 
 type Props = {
-  post: CollectionEntry<'blog'>
+  post: BlogEntry
 }
 
 const { post } = Astro.props

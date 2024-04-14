@@ -1,13 +1,16 @@
 <script lang="ts">
-  import type { CollectionEntry } from 'astro:content'
+  import type { BlogEntry } from '@content/config'
   import FormattedDate from '@component/svelte/FormattedDate.svelte'
 
-  export let post: CollectionEntry<'blog'>
+  export let post: BlogEntry
 
   const date = post.data.date || (post.data.pubDate as Date)
+  const isPin = post.data.pin
 </script>
 
-<article class="m-4 rounded-sm border border-transparent p-4 hover:border-gray-300">
+<article
+  class={`m-4 rounded-md border border-transparent p-4 hover:border-gray-300 ${isPin && 'bg-main/5'}`}
+>
   <div class="flex items-center text-sm uppercase text-gray-500">
     <FormattedDate {date} />
     {#if post.data.category}
@@ -20,7 +23,9 @@
     {/if}
   </div>
   <a href={`/posts/${post.slug}/`}>
-    <h2 class="my-2 line-clamp-2 text-4xl font-bold uppercase tracking-wide dark:text-gray-400">{post.data.title}</h2>
+    <h2 class="my-2 line-clamp-2 text-4xl font-bold uppercase tracking-wide dark:text-gray-400">
+      {post.data.title}
+    </h2>
   </a>
   {#if post.data.description}
     <div>
