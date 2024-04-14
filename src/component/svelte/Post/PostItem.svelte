@@ -9,7 +9,7 @@
 </script>
 
 <article
-  class={`m-4 rounded-md border border-transparent p-4 hover:border-gray-300 ${isPin && 'bg-main/5'}`}
+  class={`m-4 rounded-md border border-transparent p-4 hover:border-gray-300 transition-[border] duration-200 ${isPin && 'bg-main/5'}`}
 >
   <div class="flex items-center text-sm uppercase text-gray-500">
     <FormattedDate {date} />
