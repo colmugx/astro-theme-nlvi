@@ -3,13 +3,14 @@
   import FormattedDate from '@component/svelte/FormattedDate.svelte'
 
   export let post: BlogEntry
+  export let showPin: boolean = false
 
   const date = post.data.date || (post.data.pubDate as Date)
   const isPin = post.data.pin
 </script>
 
 <article
-  class={`m-4 rounded-md border border-transparent p-4 hover:border-gray-300 transition-[border] duration-200 ${isPin && 'bg-main/5'}`}
+  class={`m-4 rounded-md border border-transparent p-4 hover:border-gray-300 transition-[border] duration-200 ${showPin && isPin && 'bg-main/5'}`}
 >
   <div class="flex items-center text-sm uppercase text-gray-500">
     <FormattedDate {date} />

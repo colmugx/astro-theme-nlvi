@@ -15,6 +15,6 @@ const title = `${SITE_TITLE} | ${SITE_SUB_TITLE}`
 <Page title={title} description={SITE_DESCRIPTION}>
   <Header list={postService.getCategories()} client:load />
   <MainLayout>
-    <PostList list={postService.listForHome()} client:load />
+    <PostList home list={postService.listWithHome()} client:load />
   </MainLayout>
 </Page>

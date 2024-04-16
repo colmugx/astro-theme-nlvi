@@ -1,9 +1,10 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry } from 'astro:content'
 import BlogPost from '../../layout/BlogPost.astro'
+import { postService } from '@service/post'
 
-export async function getStaticPaths() {
-  const posts = await getCollection('blog')
+export function getStaticPaths() {
+  const posts = postService.list()
   return posts.map(post => ({
     params: { slug: post.slug },
     props: post,

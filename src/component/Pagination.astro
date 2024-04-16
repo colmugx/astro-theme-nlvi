@@ -1,0 +1,38 @@
+---
+import type { BlogEntry } from '@content/config'
+import type { Page } from 'astro'
+
+type Props = {
+  page: Page<BlogEntry>
+}
+
+const { page } = Astro.props
+---
+
+<section class="flex items-center justify-between">
+  <div>
+    {
+      page.url.prev ? (
+        <a class="page-link" href={page.url.prev}>
+          prev
+        </a>
+      ) : null
+    }
+  </div>
+  <div></div>
+  <div>
+    {
+      page.url.next ? (
+        <a class="page-link" href={page.url.next}>
+          next
+        </a>
+      ) : null
+    }
+  </div>
+</section>
+
+<style>
+  .page-link {
+    @apply font-texture text-4xl uppercase hover:text-main;
+  }
+</style>

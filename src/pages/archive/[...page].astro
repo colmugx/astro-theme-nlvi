@@ -1,0 +1,27 @@
+---
+import { postService } from '@service/post'
+import type { GetStaticPathsOptions } from 'astro'
+import MainLayout from '../../layout/Main.astro'
+import Page from '../../layout/Page.astro'
+import Header from '@view/svelte/Header.svelte'
+import PostList from '@view/svelte/PostList.svelte'
+import { SITE_DESCRIPTION, SITE_SUB_TITLE, SITE_TITLE } from '@constant/app'
+import Pagination from '@component/Pagination.astro'
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = postService.list()
+
+  return paginate(posts, { pageSize: 10 })
+}
+
+const { page } = Astro.props
+const title = `${SITE_TITLE} | ${SITE_SUB_TITLE}`
+---
+
+<Page title={title} description={SITE_DESCRIPTION}>
+  <Header />
+  <MainLayout>
+    <PostList list={page.data} client:load />
+    <Pagination page={page} />
+  </MainLayout>
+</Page>

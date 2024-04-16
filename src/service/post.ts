@@ -25,8 +25,8 @@ class PostService {
     })
   }
 
-  listForHome() {
-    return this.list().sort((a, b) => a.data.pin && !b.data.pin ? -1 : !a.data.pin && b.data.pin ? 1 : 0).slice(0, 10)
+  listWithHome() {
+    return this.list().sort((a, b) => a.data.pin && !b.data.pin ? -1 : !a.data.pin && b.data.pin ? 1 : 0)
   }
 
   getCategories() {
