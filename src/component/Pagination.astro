@@ -14,7 +14,7 @@ const { page } = Astro.props
     {
       page.url.prev ? (
         <a class="page-link" href={page.url.prev}>
-          prev
+          {'<-'} prev
         </a>
       ) : null
     }
@@ -24,7 +24,7 @@ const { page } = Astro.props
     {
       page.url.next ? (
         <a class="page-link" href={page.url.next}>
-          next
+          next {'->'}
         </a>
       ) : null
     }
