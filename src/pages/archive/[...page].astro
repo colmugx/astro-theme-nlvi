@@ -7,6 +7,7 @@ import Header from '@view/svelte/Header.svelte'
 import PostList from '@view/svelte/PostList.svelte'
 import { SITE_DESCRIPTION, SITE_SUB_TITLE, SITE_TITLE } from '@constant/app'
 import Pagination from '@component/Pagination.astro'
+import CategoryTitle from '@component/CategoryTitle.astro'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = postService.list()
@@ -20,6 +21,7 @@ const title = `${SITE_TITLE} | ${SITE_SUB_TITLE}`
 
 <Page title={title} description={SITE_DESCRIPTION}>
   <Header />
+  <CategoryTitle title="Archive" />
   <MainLayout>
     <PostList list={page.data} client:load />
     <Pagination page={page} />

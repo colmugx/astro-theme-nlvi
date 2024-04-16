@@ -1,0 +1,15 @@
+---
+type Props = {
+  title: string
+  subTitle?: string
+}
+
+const { title, subTitle } = Astro.props
+---
+
+<div class="px-36 pt-28">
+  <div class="flex flex-col font-bold uppercase">
+    <span class="mx-4 my-2 text-gray-500">{subTitle || 'Index'}</span>
+    <h1 class="font-texture text-9xl uppercase text-main">{title}</h1>
+  </div>
+</div>
