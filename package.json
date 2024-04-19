@@ -20,8 +20,11 @@
     "@designbycode/tailwindcss-text-stroke": "^1.2.1",
     "@tailwindcss/typography": "^0.5.10",
     "astro": "^4.2.6",
+    "astro-icon": "^1.1.0",
     "autoprefixer": "^10.4.19",
+    "mdast-util-to-string": "^4.0.0",
     "postcss-nested": "^6.0.1",
+    "reading-time": "^1.5.0",
     "svelte": "^4.2.12",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.4.3"

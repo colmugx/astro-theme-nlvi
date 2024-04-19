@@ -1,27 +1,34 @@
 ---
-const today = new Date()
+import { SINCE } from '@constant/app'
+import Contact from './Contact.astro'
 ---
 
-<footer>
-  &copy; {today.getFullYear()} Your name here. All rights reserved.
+<footer aria-label="footer" class="bg-gray-50 p-4 dark:bg-gray-900/50">
+  <div class="flex items-center justify-around">
+    <div class="font-mono text-xs text-gray-500">
+      <div class="flex flex-col gap-x-2">
+        <div>
+          <span>&copy;</span>
+          <span>{SINCE} ~ PRESENT</span>
+        </div>
+        <div>
+          <a class="leading-none text-main" href="https://github.com/colmugx/astro-theme-nlvi">
+            Nlvi
+          </a>
+          ♥️
+          <a
+            class="leading-none text-main"
+            href="https://astro.build"
+            target="_blank"
+            rel="noopener"
+          >
+            Astro
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <Contact />
+    </div>
+  </div>
 </footer>
-<style>
-  footer {
-    background: linear-gradient(var(--gray-gradient)) no-repeat;
-    color: rgb(var(--gray));
-    text-align: center;
-  }
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 1em;
-  }
-  .social-links a {
-    text-decoration: none;
-    color: rgb(var(--gray));
-  }
-  .social-links a:hover {
-    color: rgb(var(--gray-dark));
-  }
-</style>

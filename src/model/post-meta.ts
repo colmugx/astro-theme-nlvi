@@ -1,10 +1,13 @@
+import type { ReadTimeResults } from 'reading-time'
+
 export interface PostMeta {
   id: string
   title: string
   date: Date
+  readingTime: ReadTimeResults
   subTitle?: string
   description?: string
-  updatedData?: Date
+  updatedDate?: Date
   category?: string
   tags?: string[]
   cover?: string

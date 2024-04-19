@@ -2,6 +2,7 @@
 import { type CollectionEntry } from 'astro:content'
 import BlogPost from '../../layout/BlogPost.astro'
 import { postService } from '@service/post'
+import type { ReadTimeResults } from 'reading-time'
 
 export function getStaticPaths() {
   const posts = postService.list()
@@ -14,9 +15,13 @@ type Props = CollectionEntry<'blog'>
 
 const post = Astro.props
 
-const { Content } = await post.render()
+const { Content, remarkPluginFrontmatter } = await post.render()
+
+const readingTime: ReadTimeResults = remarkPluginFrontmatter.readingTime
+
+const props = { ...post, readingTime }
 ---
 
-<BlogPost {...post}>
+<BlogPost {...props}>
   <Content />
 </BlogPost>

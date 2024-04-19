@@ -1,5 +1,6 @@
 ---
 import '../style/content.css'
+import type { ReadTimeResults } from 'reading-time'
 import type { BlogEntry } from '@content/config'
 import Header from '../view/svelte/Header.svelte'
 import Page from './Page.astro'
@@ -10,12 +11,14 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@constant/app'
 
 type Props = Omit<BlogEntry, 'id'> & {
   id: string
+  readingTime: ReadTimeResults
 }
 
-const { id, data } = Astro.props
+const { id, data, readingTime } = Astro.props
 
 const postMeta: TPostMeta = {
   ...data,
+  readingTime,
   id,
   tags: data.tags || [],
   date: (data.date || data.pubDate)!,

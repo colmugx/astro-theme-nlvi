@@ -5,27 +5,35 @@
 </script>
 
 <div class="flex flex-col">
-  <div class="mx-1 flex items-center text-sm uppercase text-gray-400">
-    <FormattedDate date={meta.date} />
+  <div class="mx-1 flex items-center text-sm text-gray-400">
+    <FormattedDate date={meta.updatedDate || meta.date} />
     {#if meta.category}
       <a
         href={`/categories/${meta.category}`}
-        class="relative ml-2 pl-1 text-main before:absolute before:-left-1 before:top-1/2 before:h-0.5 before:w-0.5 before:-translate-y-1/2 before:rounded-full before:bg-gray-500 hover:underline"
+        class="relative uppercase dot text-main hover:underline"
       >
         {meta.category}
       </a>
     {/if}
 
-    {#if meta.updatedData}
-      <div class="last-updated-on">
-        Last updated on <FormattedDate date={meta.updatedData} />
+    {#if meta.readingTime}
+      <div class="relative dot">
+        {Math.ceil(meta.readingTime.minutes)} mins read
       </div>
     {/if}
   </div>
   <div class="pt-1 mb-8">
     <h1 class="text-8xl uppercase font-bold">{meta.title}</h1>
     {#if meta.subTitle}
-      <span>{meta.subTitle}</span>
+      <div class="pt-4 flex justify-end">
+        <h1 class="text-3xl text-gray-400">—— {meta.subTitle}</h1>
+      </div>
     {/if}
   </div>
 </div>
+
+<style>
+  .dot {
+    @apply ml-2 pl-1 before:absolute before:-left-1 before:top-1/2 before:h-0.5 before:w-0.5 before:-translate-y-1/2 before:rounded-full before:bg-gray-500;
+  }
+</style>
