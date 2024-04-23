@@ -1,16 +1,14 @@
 ---
 import { SINCE } from '@constant/app'
 import Contact from './Contact.astro'
+
+const currentYear = new Date().getFullYear()
 ---
 
 <footer aria-label="footer" class="bg-gray-50 p-4 dark:bg-gray-900/50">
   <div class="flex items-center justify-around">
     <div class="font-mono text-xs text-gray-500">
       <div class="flex flex-col gap-x-2">
-        <div>
-          <span>&copy;</span>
-          <span>{SINCE} ~ PRESENT</span>
-        </div>
         <div>
           <a class="leading-none text-main" href="https://github.com/colmugx/astro-theme-nlvi">
             Nlvi
@@ -24,6 +22,10 @@ import Contact from './Contact.astro'
           >
             Astro
           </a>
+        </div>
+        <div>
+          <span>&copy;</span>
+          <span>Colmugx | {SINCE} ~ {currentYear}</span>
         </div>
       </div>
     </div>
