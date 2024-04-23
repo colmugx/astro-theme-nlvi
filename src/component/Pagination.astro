@@ -1,6 +1,7 @@
 ---
 import type { BlogEntry } from '@content/config'
 import type { Page } from 'astro'
+import { Icon } from 'astro-icon/components'
 
 type Props = {
   page: Page<BlogEntry>
@@ -9,22 +10,22 @@ type Props = {
 const { page } = Astro.props
 ---
 
-<section class="flex items-center justify-between">
+<section class="flex items-center justify-between p-8">
   <div>
     {
       page.url.prev ? (
-        <a class="page-link" href={page.url.prev}>
-          {'<-'} prev
+        <a class="page-link pr-3" href={page.url.prev} aria-label="Previous page">
+          <Icon name="arrow-left-s-line" class="-mt-2" /> prev
         </a>
       ) : null
     }
-  </div>
+  </div> 
   <div></div>
   <div>
     {
       page.url.next ? (
-        <a class="page-link" href={page.url.next}>
-          next {'->'}
+        <a class="page-link pl-3" href={page.url.next} aria-label="Next page">
+          next <Icon name="arrow-right-s-line" class="-mt-2" />
         </a>
       ) : null
     }
@@ -33,6 +34,6 @@ const { page } = Astro.props
 
 <style>
   .page-link {
-    @apply font-texture text-4xl uppercase hover:text-main;
+    @apply flex items-center rounded-sm pt-2 font-texture text-4xl text-main hover:animate-flashBtn;
   }
 </style>
