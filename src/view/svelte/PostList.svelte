@@ -6,12 +6,13 @@
   export let list: BlogEntry[] = []
   export let home: boolean = false
 
+  let category = ''
   let isMax = false
   let _list: BlogEntry[] = []
 
   onMount(() => {
     const searchParams = new URL(window.location.href).searchParams
-    const category = searchParams.get('category')
+    category = searchParams.get('category') || ''
 
     _list = category ? list.filter(item => item.data.category === category) : list
 
@@ -26,6 +27,6 @@
     <Post {post} showPin={home} />
   {/each}
   {#if isMax}
-    <ToArchive />
+    <ToArchive tag={category} />
   {/if}
 </section>
