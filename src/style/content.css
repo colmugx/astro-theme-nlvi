@@ -56,11 +56,7 @@
   }
 
   a {
-    @apply relative text-main after:font-mono after:content-['↗'];
-
-    &:before {
-      @apply absolute -bottom-0.5 left-0 h-px w-full bg-current content-[''];
-    }
+    @apply relative text-main after:font-mono underline after:content-['↗'];
   }
 
   a:hover {
