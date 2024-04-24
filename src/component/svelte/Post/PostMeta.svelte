@@ -11,22 +11,27 @@
       <a
         href={`/categories/${meta.category}`}
         class="relative uppercase dot text-main hover:underline"
+        aria-label={`Link to ${meta.category} category page`}
       >
         {meta.category}
       </a>
     {/if}
-
     {#if meta.readingTime}
       <div class="relative dot">
         {Math.ceil(meta.readingTime.minutes)} mins read
       </div>
     {/if}
   </div>
+
   <div class="pt-1 mb-8">
-    <h1 class="text-8xl uppercase font-bold">{meta.title}</h1>
+    <h1 class="text-8xl uppercase font-bold" aria-label="Post title">
+      {meta.title}
+    </h1>
     {#if meta.subTitle}
       <div class="pt-4 flex justify-end">
-        <h1 class="text-3xl text-gray-400">—— {meta.subTitle}</h1>
+        <h1 class="text-3xl text-gray-400" aria-label="Post subtitle">
+          —— {meta.subTitle}
+        </h1>
       </div>
     {/if}
   </div>

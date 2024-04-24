@@ -10,24 +10,24 @@ const { post } = Astro.props
 const date = post.data.date || post.data.pubDate
 ---
 
-<article class="m-4 rounded-sm border border-transparent p-4 hover:border-gray-300">
+<article class="m-4 rounded-sm border border-transparent p-4 hover:border-gray-300" aria-label={`Article: ${post.data.title}`}>
   <div class="flex items-center text-sm uppercase text-gray-500">
     <FormattedDate date={date!} />
     {
       post.data.category && (
         <a
-          href={`/categories/${post.data.category}`}
+          href={`/categories/${post.data.category }`}
           class="relative ml-2 pl-1 text-main before:absolute before:-left-1 before:top-1/2 before:h-0.5 before:w-0.5 before:-translate-y-1/2 before:rounded-full before:bg-gray-500 hover:underline"
+          aria-label={`Link to ${post.data.category} category page`}
         >
           {post.data.category}
         </a>
       )
     }
   </div>
-  <a href={`/posts/${post.slug}/`}>
-    <h2 class="my-2 line-clamp-2 text-4xl font-bold uppercase tracking-wide">{post.data.title}</h2>
+  <a href ={`/posts/${post.slug}/`}>
+    <h2 class="my-2 line-clamp-2 text-4xl font-bold uppercase tracking-wide" aria-label="Post title">{post.data.title}</h2>
+    <p class="text-gray-500" aria-label="Post description">{post.data.description}</p>
   </a>
-  <div>
-    <p>{post.data.description}</p>
-  </div>
-</article>
+ </article>
+ 

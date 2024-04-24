@@ -15,6 +15,7 @@ const { href, class: className, isActive, ...props } = Astro.props
     className,
     { 'text-gray-800': isActive },
   ]}
+  aria-label="Category menu item"
   {...props}
 >
   <slot />

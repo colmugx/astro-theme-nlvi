@@ -10,7 +10,12 @@ const currentYear = new Date().getFullYear()
     <div class="font-mono text-xs text-gray-500">
       <div class="flex flex-col gap-x-2">
         <div>
-          <a class="leading-none text-main" href="https://github.com/colmugx/astro-theme-nlvi">
+          <a
+            class="leading-none text-main"
+            href="https://github.com/colmugx/astro-theme-nlvi"
+            aria-label="Link to Nlvi GitHub repository"
+            title="Visit the Nlvi GitHub repository"
+          >
             Nlvi
           </a>
           ♥️
@@ -19,6 +24,8 @@ const currentYear = new Date().getFullYear()
             href="https://astro.build"
             target="_blank"
             rel="noopener"
+            aria-label="Link to Astro website"
+            title="Visit the Astro website"
           >
             Astro
           </a>
@@ -29,7 +36,7 @@ const currentYear = new Date().getFullYear()
         </div>
       </div>
     </div>
-    <div class="right">
+    <div>
       <Contact />
     </div>
   </div>

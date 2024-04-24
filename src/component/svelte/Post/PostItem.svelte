@@ -10,7 +10,8 @@
 </script>
 
 <article
-  class={`m-4 rounded-md border border-transparent p-4 hover:border-gray-300 transition-[border] duration-200 ${showPin && isPin && 'bg-main/5 dark:bg-main/15'}`}
+  class={`m-4 rounded-md border border-transparent p-4 hover:border-gray-300  transition-[border] duration-200 ${showPin && isPin && 'bg-main/5 dark:bg-main/15'}`}
+  aria-label={`Article: ${post.data.title}`}
 >
   <div class="flex items-center text-sm uppercase text-gray-500">
     <FormattedDate {date} />
@@ -18,19 +19,21 @@
       <a
         href={`/categories/${post.data.category}`}
         class="relative ml-2 pl-1 text-main before:absolute before:-left-1 before:top-1/2 before:h-0.5 before:w-0.5 before:-translate-y-1/2 before:rounded-full before:bg-gray-500 hover:underline"
+        aria-label={`Link to ${post.data.category} category page`}
       >
         {post.data.category}
       </a>
     {/if}
   </div>
   <a href={`/posts/${post.slug}/`}>
-    <h2 class="my-2 line-clamp-2 text-4xl font-bold uppercase tracking-wide dark:text-gray-400">
+    <h2
+      class="my-2 line-clamp-2 text-4xl font-bold uppercase tracking-wide dark:text-gray-400"
+      aria-label={post.data.title}
+    >
       {post.data.title}
     </h2>
+    <p class="text-gray-500" aria-label={post.data.description || `The Article isn't description` }>
+      {post.data.description}
+    </p>
   </a>
-  {#if post.data.description}
-    <div>
-      <p>{post.data.description}</p>
-    </div>
-  {/if}
 </article>
