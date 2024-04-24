@@ -32,6 +32,7 @@
     "typescript": "^5.4.3"
   },
   "devDependencies": {
+    "@types/sanitize-html": "^2.11.0",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
     "astro-eslint-parser": "^0.16.2",
