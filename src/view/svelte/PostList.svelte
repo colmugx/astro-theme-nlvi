@@ -22,7 +22,7 @@
   })
 </script>
 
-<section class="mx-auto my-8 max-w-3xl" aria-label="Article List" role="list">
+<section class="mx-auto my-8 max-w-3xl" aria-label="Article List">
   {#each _list as post}
     <Post {post} showPin={home} />
   {/each}

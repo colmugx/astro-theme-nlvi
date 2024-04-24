@@ -32,8 +32,10 @@
     >
       {post.data.title}
     </h2>
-    <p class="text-gray-500" aria-label={post.data.description || `The Article isn't description` }>
-      {post.data.description}
-    </p>
+    {#if post.data.description}
+      <p class="text-gray-500" aria-label={post.data.description}>
+        {post.data.description}
+      </p>
+    {/if}
   </a>
 </article>

@@ -11,3 +11,5 @@ export const DISPLAY_SITE_TITLE = "Colmugx's\n Space"
 export const SITE_DESCRIPTION = "Welcome to Colmugx's Space"
 
 export const SINCE = 2016
+
+export const AUTHOR = 'colmugx'
