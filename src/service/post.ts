@@ -13,24 +13,22 @@ class PostService {
 
   private data: CollectionEntry<'blog'>[] = []
 
-  constructor() {
-    this.init()
-  }
-
-  list() {
-    return this.data.sort((a, b) => {
+  async list() {
+    return (await this.getData()).sort((a, b) => {
       const prevDate = a.data.date || a.data.pubDate
       const nextDate = b.data.date || b.data.pubDate
       return nextDate!.valueOf() - prevDate!.valueOf()
     })
   }
 
-  listWithHome() {
-    return this.list().sort((a, b) => a.data.pin && !b.data.pin ? -1 : !a.data.pin && b.data.pin ? 1 : 0)
+  async listWithHome() {
+    return (await this.list()).sort((a, b) =>
+      a.data.pin && !b.data.pin ? -1 : !a.data.pin && b.data.pin ? 1 : 0,
+    )
   }
 
-  getCategories() {
-    return Array.from(new Set(this.data.map(item => item.data.category || '')))
+  async getCategories() {
+    return Array.from(new Set((await this.getData()).map(item => item.data.category || '')))
       .filter(Boolean)
       .map<Category>(item => ({
         id: item,
@@ -38,8 +36,12 @@ class PostService {
       }))
   }
 
-  private async init() {
-    this.data = await getCollection('blog')
+  private async getData() {
+    if (!this.data.length) {
+      this.data = await getCollection('blog')
+    }
+
+    return this.data
   }
 }
 

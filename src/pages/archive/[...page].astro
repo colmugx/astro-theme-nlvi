@@ -10,7 +10,7 @@ import Pagination from '@component/Pagination.astro'
 import CategoryTitle from '@component/CategoryTitle.astro'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const posts = postService.list()
+  const posts = await postService.list()
 
   return paginate(posts, { pageSize: 10 })
 }

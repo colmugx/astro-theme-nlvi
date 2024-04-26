@@ -4,8 +4,8 @@ import BlogPost from '../../layout/BlogPost.astro'
 import { postService } from '@service/post'
 import type { ReadTimeResults } from 'reading-time'
 
-export function getStaticPaths() {
-  const posts = postService.list()
+export async function getStaticPaths() {
+  const posts = await postService.list()
   return posts.map(post => ({
     params: { slug: post.slug },
     props: post,
