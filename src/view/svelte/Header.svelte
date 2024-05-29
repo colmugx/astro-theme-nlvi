@@ -29,14 +29,14 @@
 
 <div class="relative mt-20 w-full">
   <div class="absolute left-0 right-0 top-0 -z-10 overflow-hidden">
-    <h1
+    <div
       class="px-20 font-texture text-[22vw] leading-none font-bold text-stroke-1 text-stroke-gray-100 text-stroke-fill-transparent dark:text-stroke-zinc-900 forced-colors:opacity-5"
       aria-label={`Site Title: ${DISPLAY_SITE_TITLE}`}
     >
       {#each title as str}
         <span class="block even:ml-[2em]">{str}</span>
       {/each}
-    </h1>
+    </div>
   </div>
 
   {#if isShow}

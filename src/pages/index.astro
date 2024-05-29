@@ -10,11 +10,14 @@ import Page from '../layout/Page.astro'
 import { SITE_DESCRIPTION, SITE_SUB_TITLE, SITE_TITLE } from '@constant/app'
 
 const title = `${SITE_TITLE} | ${SITE_SUB_TITLE}`
+
+const categories = await postService.getCategories()
+const list = await postService.listWithHome()
 ---
 
 <Page title={title} description={SITE_DESCRIPTION}>
-  <Header list={await postService.getCategories()} client:load />
+  <Header list={categories} client:load />
   <MainLayout>
-    <PostList home list={await postService.listWithHome()} client:load />
+    <PostList home list={list} client:load />
   </MainLayout>
 </Page>
