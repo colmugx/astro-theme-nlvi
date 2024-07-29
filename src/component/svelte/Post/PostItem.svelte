@@ -17,7 +17,7 @@
     <FormattedDate {date} />
     {#if post.data.category}
       <a
-        href={`/categories/${post.data.category}`}
+        href={`/archive/categories/${post.data.category}`}
         class="relative ml-2 pl-1 text-main before:absolute before:-left-1 before:top-1/2 before:h-0.5 before:w-0.5 before:-translate-y-1/2 before:rounded-full before:bg-gray-500 hover:underline"
         aria-label={`Link to ${post.data.category} category page`}
       >

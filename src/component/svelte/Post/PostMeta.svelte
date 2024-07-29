@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { PostMeta } from '@model/post-meta'
   import FormattedDate from '../FormattedDate.svelte'
+  import { convertDash } from '../../../util/convertDash'
   export let meta: PostMeta
 </script>
 
@@ -9,7 +10,7 @@
     <FormattedDate date={meta.updatedDate || meta.date} />
     {#if meta.category}
       <a
-        href={`/categories/${meta.category}`}
+        href={`/archive/categories/${meta.category}`}
         class="relative uppercase dot text-main hover:underline"
         aria-label={`Link to ${meta.category} category page`}
       >
@@ -22,18 +23,26 @@
       </div>
     {/if}
   </div>
-
-  <div class="pt-1 mb-8">
-    <h1 class="text-8xl uppercase font-bold" aria-label="Post title">
-      {meta.title}
-    </h1>
-    {#if meta.subTitle}
-      <div class="pt-4 flex justify-end">
-        <h1 class="text-3xl text-gray-400" aria-label="Post subtitle">
-          —— {meta.subTitle}
+  <div class="flex justify-between">
+    <div class="flex-1 flex flex-col">
+      <div class="pt-1 mb-8">
+        <h1 class="text-7xl uppercase font-bold" aria-label="Post title">
+          {meta.title}
         </h1>
+        {#if meta.subTitle}
+          <div class="pt-4 flex justify-end">
+            <h1 class="text-3xl text-gray-400" aria-label="Post subtitle">
+              —— {meta.subTitle}
+            </h1>
+          </div>
+        {/if}
       </div>
-    {/if}
+    </div>
+    <div>
+      {#each meta.tags as tag}
+        <a href={`/tags/${convertDash(tag)}`} class="text-main hover:animate-flashBtn rounded-sm">{tag}</a>
+      {/each}
+    </div>
   </div>
 </div>
 

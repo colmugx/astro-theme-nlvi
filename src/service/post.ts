@@ -1,5 +1,8 @@
+import type { Tag } from '@model/tag'
 import type { Category } from '../model/category'
-import { getCollection, type CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import { convertDash } from '../util/convertDash'
 
 class PostService {
   private static Instance: PostService
@@ -32,6 +35,18 @@ class PostService {
       .filter(Boolean)
       .map<Category>(item => ({
         id: item,
+        title: item,
+      }))
+  }
+
+  async getTags() {
+    const tagSet = new Set(
+      (await this.getData()).reduce<string[]>((acc, item) => acc.concat(item.data.tags || []), []),
+    )
+    return Array.from(tagSet)
+      .filter(Boolean)
+      .map<Tag>(item => ({
+        id: convertDash(item),
         title: item,
       }))
   }

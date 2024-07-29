@@ -8,34 +8,38 @@ import CategoryTitle from '@component/CategoryTitle.astro'
 import PostList from '@view/svelte/PostList.svelte'
 import Page from '../../../layout/Page.astro'
 import MainLayout from '../../../layout/Main.astro'
+import { convertDash } from '../../../util/convertDash'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const categories = (await postService.getCategories()).map(category => category)
+  const tags = await postService.getTags()
   const posts = await postService.list()
 
-  return categories.flatMap(category => {
-    const filterPosts = posts.filter(item => item.data.category === category.id)
+  const data = tags.flatMap(tag => {
+    const filterPosts = posts.filter(item => {
+      return item.data.tags?.some(t => convertDash(t) === convertDash(tag.id))
+    })
 
     return paginate(filterPosts, {
-      params: { id: category.id },
-      props: { categories },
+      params: { id: tag.id },
+      props: { tags },
       pageSize: 10,
     })
   })
+
+  return data
 }
 
-const { categories } = Astro.props
-
+const { tags } = Astro.props
 const { id } = Astro.params
 const { page } = Astro.props
 
-const categoryTitle = categories.find(item => item.id === id)?.title || 'Category'
+const categoryTitle = tags.find(item => item.id === id)?.title || 'Tag'
 const siteTitle = `${SITE_TITLE} | ${SITE_SUB_TITLE}`
 ---
 
 <Page title={siteTitle} description={SITE_DESCRIPTION}>
   <Header />
-  <CategoryTitle title={categoryTitle} subTitle="Category" />
+  <CategoryTitle title={categoryTitle} subTitle="Tag" />
   <MainLayout>
     <PostList list={page.data} client:load />
     <Pagination page={page} />
