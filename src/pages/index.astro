@@ -1,9 +1,9 @@
 ---
 import { postService } from '@service/post'
 import { SITE_DESCRIPTION, SITE_SUB_TITLE, SITE_TITLE } from '@constant/app'
+import Header from '@component/Header.astro'
 import MainLayout from '../layout/Main.astro'
 
-import Header from '../view/svelte/Header.svelte'
 import PostList from '../view/svelte/PostList.svelte'
 
 
@@ -16,7 +16,7 @@ const list = await postService.listWithHome()
 ---
 
 <Page title={title} description={SITE_DESCRIPTION}>
-  <Header list={categories} client:load />
+  <Header list={categories}/>
   <MainLayout>
     <PostList home list={list} client:load />
   </MainLayout>

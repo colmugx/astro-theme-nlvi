@@ -1,0 +1,34 @@
+---
+import type { Category } from '@model/category'
+import type { TMenu } from './types'
+import { DISPLAY_SITE_TITLE } from '@constant/app'
+import Menu from './Menu.astro'
+
+type Props = {
+  list: Category[]
+  active?: string
+}
+
+const { list, active } = Astro.props
+
+const title = DISPLAY_SITE_TITLE.split('\n')
+
+let menuList: TMenu[] = list.map<TMenu>(item => ({
+  title: item.title,
+  slug: item.id ? `/categories/${item.id}` : '/',
+  active: active === item.id,
+}))
+---
+
+<div class="relative mt-20 w-full">
+  <div class="absolute left-0 right-0 top-0 -z-10 overflow-hidden">
+    <div
+      class="px-20 font-texture text-[22vw] font-bold leading-none text-stroke-1 text-stroke-gray-100 text-stroke-fill-transparent dark:text-stroke-zinc-900 forced-colors:opacity-5"
+      aria-label={DISPLAY_SITE_TITLE}
+    >
+      {title.map(str => <span class="block even:ml-[2em]">{str}</span>)}
+    </div>
+  </div>
+
+  <Menu list={menuList} />
+</div>

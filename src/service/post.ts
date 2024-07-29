@@ -30,6 +30,10 @@ class PostService {
     )
   }
 
+  async listWithCategory(category: string) {
+    return (await this.getData()).filter(item => item.data.category === category)
+  }
+
   async getCategories() {
     return Array.from(new Set((await this.getData()).map(item => item.data.category || '')))
       .filter(Boolean)
