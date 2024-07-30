@@ -31,7 +31,7 @@ class PostService {
   }
 
   async listWithCategory(category: string) {
-    return (await this.getData()).filter(item => item.data.category === category)
+    return (await this.listWithHome()).filter(item => item.data.category === category)
   }
 
   async getCategories() {
