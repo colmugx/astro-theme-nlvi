@@ -3,9 +3,12 @@ import '../style/content.css'
 import type { ReadTimeResults } from 'reading-time'
 import type { BlogEntry } from '@content/config'
 import type { PostMeta as TPostMeta } from '@model/post-meta'
+import type { Tag } from '@model/tag'
 import { SITE_DESCRIPTION, SITE_TITLE } from '@constant/app'
 import Header from '@component/Header.astro'
 import PostMeta from '@component/PostMeta.astro'
+import Tags from '@component/Tags.astro'
+import { convertDash } from '@util/convertDash'
 import Page from './Page.astro'
 import MainLayout from '../layout/Main.astro'
 
@@ -25,17 +28,24 @@ const postMeta: TPostMeta = {
 }
 
 const title = `${data.title} · ${SITE_TITLE} `
+const tags = postMeta.tags?.map<Tag>(tag => ({
+  id: convertDash(tag),
+  title: tag,
+}))
 ---
 
 <Page title={title} description={data.description || SITE_DESCRIPTION}>
   <Header />
   <MainLayout>
-    <article class="pt-32" aria-label="Article Detail">
+    <article class="pt-32 pb-4" aria-label="Article Detail">
       <PostMeta meta={postMeta} />
       <div class="flex justify-center">
-        <div class="content prose-base max-w-3xl py-6 font-bodytext" aria-label="Article Content">
+        <div class="content prose-base max-w-3xl pt-6 font-bodytext" aria-label="Article Content">
           <slot />
         </div>
+      </div>
+      <div class="max-w-3xl mx-auto">
+        {tags && <Tags list={tags} />}
       </div>
     </article>
   </MainLayout>

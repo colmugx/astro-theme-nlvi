@@ -2,7 +2,7 @@ import type { Tag } from '@model/tag'
 import type { Category } from '../model/category'
 import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
-import { convertDash } from '../util/convertDash'
+import { convertDash } from '@util/convertDash'
 
 class PostService {
   private static Instance: PostService

@@ -8,7 +8,7 @@ import Page from '@layout/Page.astro'
 import MainLayout from '@layout/Main.astro'
 import PostList from '@component/PostList.astro'
 import Header from '@component/Header.astro'
-import { convertDash } from '../../../util/convertDash'
+import { convertDash } from '@util/convertDash'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const tags = await postService.getTags()

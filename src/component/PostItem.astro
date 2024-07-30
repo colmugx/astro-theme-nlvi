@@ -1,6 +1,9 @@
 ---
 import type { BlogEntry } from '@content/config'
+import type { Tag } from '@model/tag'
+import { convertDash } from '@util/convertDash'
 import FormattedDate from './FormattedDate.astro'
+import Tags from './Tags.astro'
 
 type Props = {
   post: BlogEntry
@@ -11,13 +14,20 @@ const { post, showPin } = Astro.props
 
 const isPin = post.data.pin
 const date = post.data.date || (post.data.pubDate as Date)
+const tags = post.data.tags?.map<Tag>(tag => ({
+  id: convertDash(tag),
+  title: tag,
+}))
 ---
 
 <article
   class={`m-4 rounded-md border border-transparent p-4 hover:border-gray-300  transition-[border] duration-200 ${showPin && isPin && 'bg-main/5 dark:bg-main/15'}`}
   aria-label={`Article: ${post.data.title}`}
 >
-  <div class="flex items-center text-sm uppercase text-gray-500" transition:name={`post-time-${post.id}`}>
+  <div
+    class="flex items-center text-sm uppercase text-gray-500"
+    transition:name={`post-time-${post.id}`}
+  >
     <FormattedDate date={date} />
     {
       post.data.category && (
@@ -47,4 +57,5 @@ const date = post.data.date || (post.data.pubDate as Date)
       )
     }
   </a>
+  {tags && <Tags list={tags} />}
 </article>

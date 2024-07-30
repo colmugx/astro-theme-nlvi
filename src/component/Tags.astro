@@ -1,6 +1,8 @@
 ---
+import type { Tag } from '@model/tag'
+
 type Props = {
-  list?: string[]
+  list?: Tag[]
 }
 
 const { list = [] } = Astro.props
@@ -8,10 +10,17 @@ const { list = [] } = Astro.props
 
 {
   list.length && (
-    <div class="max-w-3xl mx-auto">
-      {list.map(item => (
-        <a class="text-main hover:underline" aria-label="article tag">{`# ${item}`}</a>
-      ))}
-    </div>
+    <>
+      <div class="mb-2 mt-4 border-b border-gray-200" />
+      <div class="w-fit flex gap-x-1 text-sm opacity-30 hover:opacity-100 transition-opacity">
+        {list.map(item => (
+          <a
+            href={`/archive/tags/${item.id}`}
+            class="rounded-sm px-1 text-main hover:animate-flashBtn"
+            aria-label="article tag"
+          >{`#${item.title}`}</a>
+        ))}
+      </div>
+    </>
   )
 }
