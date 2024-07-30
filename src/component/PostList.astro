@@ -1,0 +1,23 @@
+---
+import type { BlogEntry } from '@content/config'
+import ToArchive from '@view/svelte/ToArchive.svelte'
+import PostItem from './svelte/Post/PostItem.svelte'
+
+type Props = {
+  list: BlogEntry[]
+  home?: boolean
+  category?: string
+}
+
+const { list, home = false, category = '' } = Astro.props
+
+// slice items when the count is more than 10.
+const isMax = list.length > 10
+const _list = home && isMax ? list.slice(0, 10) : list
+---
+
+<section class="mx-auto my-8 max-w-3xl" aria-label="Article List">
+  {_list.map(post => <PostItem {post} showPin={home} />)}
+
+  {isMax && <ToArchive tag={category} />}
+</section>
