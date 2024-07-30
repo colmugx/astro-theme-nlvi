@@ -1,7 +1,7 @@
 ---
 import type { BlogEntry } from '@content/config'
-import PostItem from './svelte/Post/PostItem.svelte'
 import ToArchive from './ToArchive.astro'
+import PostItem from './PostItem.astro'
 
 type Props = {
   list: BlogEntry[]
@@ -17,7 +17,7 @@ const _list = home && isMax ? list.slice(0, 10) : list
 ---
 
 <section class="mx-auto my-8 max-w-3xl" aria-label="Article List">
-  {_list.map(post => <PostItem {post} showPin={home} />)}
+  {_list.map(post => <PostItem post={post} showPin={home} />)}
 
   {isMax && <ToArchive tag={category} />}
 </section>

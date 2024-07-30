@@ -3,7 +3,6 @@ import '../style/content.css'
 import type { ReadTimeResults } from 'reading-time'
 import type { BlogEntry } from '@content/config'
 import type { PostMeta as TPostMeta } from '@model/post-meta'
-import PostMeta from '@component/svelte/Post/PostMeta.svelte'
 import { SITE_DESCRIPTION, SITE_TITLE } from '@constant/app'
 import Header from '@component/Header.astro'
 import Page from './Page.astro'
@@ -31,7 +30,7 @@ const title = `${data.title} · ${SITE_TITLE} `
   <Header />
   <MainLayout>
     <article class="pt-32" aria-label="Article Detail">
-      <PostMeta meta={postMeta} />
+      <postMeta meta={postMeta} />
       <div class="flex justify-center">
         <div class="content prose-base max-w-3xl py-6 font-bodytext" aria-label="Article Content">
           <slot />
