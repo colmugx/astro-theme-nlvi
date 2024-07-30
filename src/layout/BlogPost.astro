@@ -5,6 +5,7 @@ import type { BlogEntry } from '@content/config'
 import type { PostMeta as TPostMeta } from '@model/post-meta'
 import { SITE_DESCRIPTION, SITE_TITLE } from '@constant/app'
 import Header from '@component/Header.astro'
+import PostMeta from '@component/PostMeta.astro'
 import Page from './Page.astro'
 import MainLayout from '../layout/Main.astro'
 
@@ -30,7 +31,7 @@ const title = `${data.title} · ${SITE_TITLE} `
   <Header />
   <MainLayout>
     <article class="pt-32" aria-label="Article Detail">
-      <postMeta meta={postMeta} />
+      <PostMeta meta={postMeta} />
       <div class="flex justify-center">
         <div class="content prose-base max-w-3xl py-6 font-bodytext" aria-label="Article Content">
           <slot />
