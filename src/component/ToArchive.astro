@@ -1,0 +1,15 @@
+---
+type Props = {
+  tag?: string
+}
+
+const { tag } = Astro.props
+---
+
+<a href={tag ? `/archive/categories/${tag}/2` : '/archive/all/2'} aria-label="Go to archive page">
+  <div class="m-8 flex justify-center uppercase">
+    <div class="rounded-sm px-2 pt-2 font-texture text-4xl text-main hover:animate-flashBtn">
+      {`${tag ? 'More' : 'Archive'}`}
+    </div>
+  </div>
+</a>

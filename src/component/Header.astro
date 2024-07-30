@@ -5,11 +5,11 @@ import { DISPLAY_SITE_TITLE } from '@constant/app'
 import Menu from './Menu.astro'
 
 type Props = {
-  list: Category[]
+  list?: Category[]
   active?: string
 }
 
-const { list, active } = Astro.props
+const { list = [], active } = Astro.props
 
 const title = DISPLAY_SITE_TITLE.split('\n')
 
@@ -30,5 +30,5 @@ let menuList: TMenu[] = list.map<TMenu>(item => ({
     </div>
   </div>
 
-  <Menu list={menuList} />
+  {menuList.length ? <Menu list={menuList} /> : null}
 </div>

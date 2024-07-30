@@ -26,6 +26,6 @@ const title = `${SITE_TITLE} | ${SITE_SUB_TITLE}`
 <Page title={title} description={SITE_DESCRIPTION}>
   <Header list={categories} active={id} />
   <MainLayout>
-    <PostList home list={list} />
+    <PostList home list={list} category={id} />
   </MainLayout>
 </Page>

@@ -1,13 +1,13 @@
 ---
 import type { GetStaticPathsOptions } from 'astro'
 import { postService } from '@service/post'
-import Header from '@view/svelte/Header.svelte'
 import { SITE_DESCRIPTION, SITE_SUB_TITLE, SITE_TITLE } from '@constant/app'
 import Pagination from '@component/Pagination.astro'
 import CategoryTitle from '@component/CategoryTitle.astro'
 import Page from '@layout/Page.astro'
 import MainLayout from '@layout/Main.astro'
 import PostList from '@component/PostList.astro'
+import Header from '@component/Header.astro'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const categories = (await postService.getCategories()).map(category => category)

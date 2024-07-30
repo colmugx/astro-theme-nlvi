@@ -1,0 +1,17 @@
+---
+type Props = {
+  list?: string[]
+}
+
+const { list = [] } = Astro.props
+---
+
+{
+  list.length && (
+    <div class="max-w-3xl mx-auto">
+      {list.map(item => (
+        <a class="text-main hover:underline" aria-label="article tag">{`# ${item}`}</a>
+      ))}
+    </div>
+  )
+}
