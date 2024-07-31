@@ -15,12 +15,18 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v2
+      - name: Install
+        shell: "bash"
+        working-directory: "."
+        run: pnpm install
+      - name: Build
+        shell: "bash"
+        working-directory: "."
+        run: pnpm run build:ci
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          # path: .
-          node-version: 20
-          package-manager: pnpm@latest
+          path: "./dist/"
 
   deploy:
     needs: build
