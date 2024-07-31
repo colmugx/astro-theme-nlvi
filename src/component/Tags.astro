@@ -10,9 +10,9 @@ const { list = [] } = Astro.props
 
 {
   list.length && (
-    <>
+    <div class="opacity-35 hover:opacity-100 transition-opacity">
       <div class="mb-2 mt-4 border-b border-gray-200" />
-      <div class="w-fit flex gap-x-1 text-sm opacity-30 hover:opacity-100 transition-opacity">
+      <div class="w-fit flex gap-x-1 text-sm">
         {list.map(item => (
           <a
             href={`/archive/tags/${item.id}`}
@@ -21,6 +21,6 @@ const { list = [] } = Astro.props
           >{`#${item.title}`}</a>
         ))}
       </div>
-    </>
+    </div>
   )
 }
