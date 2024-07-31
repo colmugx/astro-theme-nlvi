@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
       - name: Install
         shell: "bash"
         working-directory: "."
