@@ -1,5 +1,4 @@
 ---
-import type { GetStaticPathsOptions } from 'astro'
 import { postService } from '@service/post'
 import Header from '@component/Header.astro'
 import { SITE_DESCRIPTION, SITE_SUB_TITLE, SITE_TITLE } from '@constant/app'
@@ -7,7 +6,7 @@ import PostList from '@component/PostList.astro'
 import Page from '@layout/Page.astro'
 import MainLayout from '@layout/Main.astro'
 
-export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+export async function getStaticPaths() {
   const categories = await postService.getCategories()
 
   return categories.map(category => ({

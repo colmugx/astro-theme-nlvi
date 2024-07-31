@@ -23,6 +23,7 @@ const tags = post.data.tags?.map<Tag>(tag => ({
 <article
   class={`m-4 rounded-md border border-transparent p-4 hover:border-gray-300  transition-[border] duration-200 ${showPin && isPin && 'bg-main/5 dark:bg-main/15'}`}
   aria-label={`Article: ${post.data.title}`}
+  transition:name={`post-${post.id}`}
 >
   <div
     class="flex items-center text-sm uppercase text-gray-500"
@@ -50,9 +51,9 @@ const tags = post.data.tags?.map<Tag>(tag => ({
       {post.data.title}
     </h2>
     {
-      post.data.description && (
-        <p class="text-gray-500" aria-label={post.data.description}>
-          {post.data.description}
+      post.data.summary && (
+        <p class="text-gray-500" aria-label={post.data.summary}>
+          {post.data.summary}
         </p>
       )
     }

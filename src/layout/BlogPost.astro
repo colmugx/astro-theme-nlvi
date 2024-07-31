@@ -34,17 +34,21 @@ const tags = postMeta.tags?.map<Tag>(tag => ({
 }))
 ---
 
-<Page title={title} description={data.description || SITE_DESCRIPTION}>
+<Page
+  title={title}
+  description={data.description || SITE_DESCRIPTION}
+  keywords={data.keywords ? data.keywords : []}
+>
   <Header />
   <MainLayout>
-    <article class="pt-32 pb-4" aria-label="Article Detail">
+    <article class="pb-4 pt-32" aria-label="Article Detail">
       <PostMeta meta={postMeta} />
       <div class="flex justify-center">
         <div class="content prose-base max-w-3xl pt-6 font-bodytext" aria-label="Article Content">
           <slot />
         </div>
       </div>
-      <div class="max-w-3xl mx-auto">
+      <div class="mx-auto max-w-3xl">
         {tags && <Tags list={tags} />}
       </div>
     </article>

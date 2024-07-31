@@ -6,15 +6,16 @@ import PageHeader from '../component/PageHeader.astro'
 type Props = {
   title: string
   description: string
+  keywords?: string[]
 }
 
-const { title, description } = Astro.props
+const { title, description, keywords } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} keywords={keywords} />
   </head>
   <body>
     <PageHeader />
