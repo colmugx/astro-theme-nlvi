@@ -65,7 +65,7 @@ function OGImage({ title, color, author }: OGImageProps) {
             display: 'flex',
             position: 'absolute',
             bottom: 0,
-            left: 64,
+            right: 64,
           }}
         >
           {author && (
