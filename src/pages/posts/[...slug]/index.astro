@@ -19,7 +19,7 @@ const { Content, remarkPluginFrontmatter } = await post.render()
 
 const readingTime: ReadTimeResults = remarkPluginFrontmatter.readingTime
 
-const props = { ...post, readingTime, image: `/posts/${post.slug}/og-image.png` }
+const props = { ...post, readingTime }
 ---
 
 <BlogPost {...props}>

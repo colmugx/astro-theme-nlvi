@@ -58,5 +58,5 @@ const tags = post.data.tags?.map<Tag>(tag => ({
       )
     }
   </a>
-  {tags && <Tags list={tags} />}
+  {tags?.length ? <Tags list={tags} /> : null}
 </article>

@@ -17,7 +17,7 @@ type Props = Omit<BlogEntry, 'id'> & {
   readingTime: ReadTimeResults
 }
 
-const { id, data, readingTime } = Astro.props
+const { id, slug, data, readingTime } = Astro.props
 
 const postMeta: TPostMeta = {
   ...data,
@@ -38,6 +38,7 @@ const tags = postMeta.tags?.map<Tag>(tag => ({
   title={title}
   description={data.description || SITE_DESCRIPTION}
   keywords={data.keywords ? data.keywords : []}
+  image={new URL(`/posts/${slug}/og-image.png`, Astro.url).href}
 >
   <Header />
   <MainLayout>
