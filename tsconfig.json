@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "strictNullChecks": true,
+    "jsx": "react-jsx",
     "paths": {
       "@component/*": ["src/component/*"],
       "@layout/*": ["src/layout/*"],

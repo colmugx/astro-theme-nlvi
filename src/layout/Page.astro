@@ -7,15 +7,16 @@ type Props = {
   title: string
   description: string
   keywords?: string[]
+  image?: string
 }
 
-const { title, description, keywords } = Astro.props
+const { title, description, keywords, image } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} keywords={keywords} />
+    <BaseHead title={title} description={description} keywords={keywords} image={image} />
   </head>
   <body>
     <PageHeader />
