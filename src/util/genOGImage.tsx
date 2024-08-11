@@ -2,6 +2,7 @@ import type { Font, FontWeight } from 'satori'
 import satori from 'satori'
 
 interface OGImageProps {
+  siteTitle: string
   title: string
   color: string
   author?: string
@@ -9,7 +10,7 @@ interface OGImageProps {
 
 const cache: { [key: string]: any } = {}
 
-function OGImage({ title, color, author }: OGImageProps) {
+function OGImage({ siteTitle, title, color, author }: OGImageProps) {
   return (
     <div
       style={{
@@ -52,6 +53,17 @@ function OGImage({ title, color, author }: OGImageProps) {
         <div style={{ display: 'flex', flexDirection: 'column', padding: 64 }}>
           <p
             style={{
+              fontSize: 24,
+              fontWeight: 'bold',
+              color: '#999',
+              letterSpacing: -2,
+            }}
+          >
+            {siteTitle.toUpperCase()}
+          </p>
+          <p
+            style={{
+              lineHeight: 1,
               fontSize: 68,
               fontWeight: 'bold',
               overflow: 'hidden',
