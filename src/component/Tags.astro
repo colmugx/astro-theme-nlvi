@@ -9,7 +9,7 @@ const { list = [] } = Astro.props
 ---
 
 {
-  list.length && (
+  list.length ? (
     <div class="opacity-35 hover:opacity-100 transition-opacity">
       <div class="mb-2 mt-4 border-b border-gray-200" />
       <div class="w-fit flex gap-x-1 text-sm">
@@ -22,5 +22,5 @@ const { list = [] } = Astro.props
         ))}
       </div>
     </div>
-  )
+  ) : null
 }
