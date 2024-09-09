@@ -1,0 +1,11 @@
+---
+import { genOGImage } from '@util/genOGImage'
+
+const svg = genOGImage({
+  title: 'Lorem ipsum dolor sit amet',
+  color: '#39c5bb',
+  author: 'colmugx',
+})
+---
+
+<div set:html={svg} />

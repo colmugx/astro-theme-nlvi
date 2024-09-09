@@ -1,4 +1,6 @@
 ---
+import { TWITTER } from '@constant/app'
+
 interface Props {
   title: string
   description: string
@@ -13,3 +15,11 @@ const { title, description, image } = Astro.props
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 {image && <meta property="twitter:image" content={image} />}
+{
+  TWITTER && (
+    <>
+      <meta property="twitter:creator" content={`@${TWITTER}`} />
+      <meta property="twitter:site" content={`@${TWITTER}`} />
+    </>
+  )
+}
