@@ -6,6 +6,7 @@ const blog = defineCollection({
   // Type-check frontmatter using a schema
   schema: z
     .object({
+      draft: z.boolean().default(false),
       title: z.string(),
       subTitle: z.string().optional(),
       category: z.string().optional(),

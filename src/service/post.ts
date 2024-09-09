@@ -57,7 +57,9 @@ class PostService {
 
   private async getData() {
     if (!this.data.length) {
-      this.data = await getCollection('blog')
+      const data = await getCollection('blog')
+
+      this.data = data.filter(item => !item.data.draft)
     }
 
     return this.data
