@@ -4,7 +4,8 @@ import prettier from 'eslint-plugin-prettier/recommended'
 import unusedImports from 'eslint-plugin-unused-imports'
 import { fixupPluginRules } from '@eslint/compat'
 import tsParser from '@typescript-eslint/parser'
-import parser from 'astro-eslint-parser'
+import astroParser from 'astro-eslint-parser'
+import eslintPluginAstro from 'eslint-plugin-astro'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
 
@@ -19,7 +20,7 @@ const importPlugin = compat.plugins('eslint-plugin-import')[0]?.plugins?.import
 
 export default [
   js.configs.recommended,
-  ...compat.extends('plugin:astro/recommended'),
+  ...eslintPluginAstro.configs.recommended,
   prettier,
   {
     plugins: {
@@ -57,14 +58,13 @@ export default [
     files: ['**/*.astro'],
 
     languageOptions: {
-      parser: parser,
-      ecmaVersion: 5,
-      sourceType: 'script',
+      parser: astroParser,
+      sourceType: 'module',
 
-      parserOptions: {
-        parser: '@typescript-eslint/parser',
-        extraFileExtensions: ['.astro'],
-      },
+      // parserOptions: {
+      //   parser: '@typescript-eslint/parser',
+      //   extraFileExtensions: ['.astro'],
+      // },
     },
   },
 ]

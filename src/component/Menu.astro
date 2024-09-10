@@ -18,15 +18,19 @@ const { mini, className, list } = Astro.props
 
 <nav
   class:list={[
-    'flex h-full items-center gap-x-4',
-    mini ? 'ml-36' : 'relative mx-24 justify-end pt-52',
+    'flex h-full items-center gap-x-2 sm:gap-x-4',
+    mini ? 'ml-36' : 'relative justify-center pt-52 sm:mx-24 sm:justify-end',
     className,
   ]}
   aria-label="Menu"
 >
   {
     list.map(item => (
-      <HeaderLink isActive={item.active} href={item.slug} class={mini ? 'text-xl' : 'text-5xl'}>
+      <HeaderLink
+        isActive={item.active}
+        href={item.slug}
+        class={mini ? 'text-xl' : 'text-[8vw] sm:text-5xl'}
+      >
         {item.title}
       </HeaderLink>
     ))
