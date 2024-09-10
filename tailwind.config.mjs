@@ -4,13 +4,18 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      screens: {
+        mobile: '430px',
+      },
       colors: {
         background: '#fdfeff',
-        main: '#bb2649'
+        main: '#bb2649',
       },
       fontFamily: {
-        texture: "'AmericanCaptain', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
-        bodytext: "'Helvetica Neue', Helvetica,Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif"
+        texture:
+          "'AmericanCaptain', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
+        bodytext:
+          "'Helvetica Neue', Helvetica,Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif",
       },
       keyframes: ({ theme }) => ({
         flashBtn: {
@@ -18,15 +23,12 @@ export default {
           '10%': { 'background-color': theme('colors.main'), color: 'transparent' },
           '30%': { 'background-color': theme('colors.main'), color: 'transparent', opacity: 0 },
           '100%': { 'background-color': theme('colors.main'), color: '#fff', opacity: 1 },
-        }
+        },
       }),
       animation: {
-        flashBtn: 'flashBtn 280ms ease forwards'
-      }
+        flashBtn: 'flashBtn 280ms ease forwards',
+      },
     },
   },
-  plugins: [
-    require('@designbycode/tailwindcss-text-stroke'),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@designbycode/tailwindcss-text-stroke'), require('@tailwindcss/typography')],
 }

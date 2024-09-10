@@ -45,7 +45,10 @@ const tags = postMeta.tags?.map<Tag>(tag => ({
     <article class="pb-4 pt-32" aria-label="Article Detail">
       <PostMeta meta={postMeta} />
       <div class="flex justify-center px-4">
-        <div class="content prose-base max-w-3xl pt-6 font-bodytext" aria-label="Article Content">
+        <div
+          class="content prose-base max-w-3xl pt-6 font-bodytext max-md:max-w-full"
+          aria-label="Article Content"
+        >
           <slot />
         </div>
       </div>
