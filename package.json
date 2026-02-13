@@ -22,7 +22,7 @@
     "astro": "^5.15.9",
     "astro-icon": "^1.1.5",
     "autoprefixer": "^10.4.21",
-    "markdown-it": "^14.1.0",
+    "markdown-it": "^14.1.1",
     "mdast-util-to-string": "^4.0.0",
     "postcss-nested": "^7.0.2",
     "react": "^19.1.1",
